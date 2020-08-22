@@ -15,7 +15,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="identifier" type="VARCHAR(255)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" unique="true"/>
             </column>
             <column name="category" type="VARCHAR(100)">
                 <constraints nullable="false"/>
