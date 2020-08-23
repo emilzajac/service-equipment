@@ -24,29 +24,29 @@ import javax.persistence.Table;
 @Table(name = "comments")
 public class Comment {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
-	@Column(name = "description")
-	private String description;
+    @Column(name = "description")
+    private String description;
 
-	@ManyToOne
-	@JoinColumn(name = "electronic_equipment_id")
-	private ElectronicEquipment electronicEquipment;
+    @ManyToOne
+    @JoinColumn(name = "electronic_equipment_id")
+    private ElectronicEquipment electronicEquipment;
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		Comment comment = (Comment) o;
-		return id.equals(comment.id);
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Comment comment = (Comment) o;
+        return id.equals(comment.id);
+    }
 
-	@Override
-	public int hashCode() {
-		return 42;
-	}
+    @Override
+    public int hashCode() {
+        return 42;
+    }
 
 }

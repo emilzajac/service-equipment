@@ -42,3 +42,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+web-angular-client/package-lock.json
+web-angular-client/node
+web-angular-client/node_modules/
