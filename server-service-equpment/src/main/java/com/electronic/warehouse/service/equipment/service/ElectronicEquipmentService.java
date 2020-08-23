@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -44,9 +45,9 @@ public class ElectronicEquipmentService {
     }
 
     public Set<ElectronicEquipmentDto> getAll() {
-        return electronicEquipmentRepository.findAll().stream()
+        return electronicEquipmentRepository.findAllByOrderByIdAsc().stream()
                 .map(electronicEquipmentMapper::toElectronicEquipmentDto)
-                .collect(Collectors.toSet());
+                .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
     public ElectronicEquipmentDto findByIdentifier(String identifier) {

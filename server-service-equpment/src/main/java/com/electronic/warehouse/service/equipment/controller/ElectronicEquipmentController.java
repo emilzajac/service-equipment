@@ -1,4 +1,4 @@
-package com.electronic.warehouse.service.equipment.component;
+package com.electronic.warehouse.service.equipment.controller;
 
 import com.electronic.warehouse.service.equipment.model.dto.ElectronicEquipmentDto;
 import com.electronic.warehouse.service.equipment.model.form.ElectronicEquipmentForm;

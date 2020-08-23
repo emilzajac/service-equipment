@@ -1,0 +1,66 @@
+<div class="container p-4">
+  <div class="row justify-content-around">
+    <div class="col-md-6 align-self-center">
+      <div class="card">
+        <header class="card-header">
+          <h4 class="card-title mt-2">Add electronic</h4>
+        </header>
+        <article class="card-body">
+          <form (ngSubmit)="onSubmit()" [formGroup]="electronicAddForm">
+            <div class="col form-group">
+              <label for="name">Name</label>
+              <input [ngClass]="{ 'is-invalid': submitted && field.name.errors }" class="form-control" formControlName="name" id="name"
+                     type="text"/>
+              <div *ngIf="submitted && field.name.errors" class="invalid-feedback">
+                <div *ngIf="field.name.errors.required">Name is required</div>
+              </div>
+            </div>
+            <div class="col form-group">
+              <label for="category">Category</label>
+              <select class="custom-select" formControlName="categoryEnum" id="category">
+                <option *ngFor="let key of keys" [value]="categories[key]">{{categories[key]}}</option>
+              </select>
+            </div>
+            <div class="col form-group">
+              <label for="producer">Producer</label>
+              <input [ngClass]="{ 'is-invalid': submitted && field.producer.errors }" class="form-control" formControlName="producer" id="producer"
+                     type="text"/>
+              <div *ngIf="submitted && field.producer.errors" class="invalid-feedback">
+                <div *ngIf="field.producer.errors.required">Producer is required</div>
+              </div>
+            </div>
+            <div class="col form-group">
+              <label for="identifier">Identifier</label>
+              <input [ngClass]="{ 'is-invalid': submitted && field.identifier.errors }" class="form-control" formControlName="identifier" id="identifier"
+                     type="text"/>
+              <div *ngIf="submitted && field.identifier.errors" class="invalid-feedback">
+                <div *ngIf="field.identifier.errors.required">Identifier is required</div>
+              </div>
+            </div>
+            <div class="col form-group">
+              <label for="color">Color</label>
+              <input [ngClass]="{ 'is-invalid': submitted && field.color.errors }" class="form-control" formControlName="color" id="color"
+                     type="text"/>
+              <div *ngIf="submitted && field.color.errors" class="invalid-feedback">
+                <div *ngIf="field.color.errors.required">Color is required</div>
+              </div>
+            </div>
+            <div class="form-group text-center">
+              <label class="form-check form-check-inline">
+                <input class="form-check-input" formControlName="repairStatusEnum" id="broken" name="repairStatusEnum" type="radio" value="BROKEN">
+                <span class="form-check-label">BROKEN</span>
+              </label>
+              <label class="form-check form-check-inline">
+                <input class="form-check-input" formControlName="repairStatusEnum" id="repaired" name="repairStatusEnum" type="radio" value="REPAIRED">
+                <span class="form-check-label">REPAIRED</span>
+              </label>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary btn-block" type="submit">Add</button>
+            </div>
+          </form>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
