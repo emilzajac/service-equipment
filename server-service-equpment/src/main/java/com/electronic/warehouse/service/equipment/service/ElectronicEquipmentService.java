@@ -29,7 +29,7 @@ public class ElectronicEquipmentService {
     @Transactional
     public ElectronicEquipmentDto create(ElectronicEquipmentForm electronicEquipmentForm) {
         ElectronicEquipment electronicEquipment = electronicEquipmentRepository.save(electronicEquipmentMapper.toElectronicEquipment(electronicEquipmentForm));
-        electronicEquipment.setParameters(parameterValueMapper.mapParameterValue(electronicEquipmentForm, electronicEquipment));
+        electronicEquipment.setParameters(parameterValueMapper.mapParameterValues(electronicEquipmentForm, electronicEquipment));
         return electronicEquipmentMapper.toElectronicEquipmentDto(electronicEquipment);
     }
 

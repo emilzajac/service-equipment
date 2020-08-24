@@ -28,4 +28,8 @@ export class ElectronicEquipmentListComponent implements OnInit {
   addNewElectronic(): void {
     this.router.navigate([`electronic-equipment/add`]);
   }
+
+  details(identifier: string): void {
+    this.router.navigate([`/details/list/${identifier}`]);
+  }
 }
