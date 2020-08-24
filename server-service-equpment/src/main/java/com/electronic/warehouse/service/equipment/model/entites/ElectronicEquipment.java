@@ -61,4 +61,8 @@ public class ElectronicEquipment {
     @ToString.Exclude
     private Set<Comment> comments = new HashSet<>();
 
+    @OneToMany(mappedBy = "electronicEquipment", cascade = CascadeType.ALL, orphanRemoval = true)
+    @ToString.Exclude
+    private Set<ParameterValue> parameters = new HashSet<>();
+
 }

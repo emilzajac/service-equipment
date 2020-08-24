@@ -2,6 +2,7 @@ package com.electronic.warehouse.service.equipment.service;
 
 import com.electronic.warehouse.service.equipment.exceptions.EquipmentException;
 import com.electronic.warehouse.service.equipment.mappers.ElectronicEquipmentMapper;
+import com.electronic.warehouse.service.equipment.mappers.ParameterValueMapper;
 import com.electronic.warehouse.service.equipment.model.dto.ElectronicEquipmentDto;
 import com.electronic.warehouse.service.equipment.model.entites.ElectronicEquipment;
 import com.electronic.warehouse.service.equipment.model.form.ElectronicEquipmentForm;
@@ -21,11 +22,15 @@ public class ElectronicEquipmentService {
 
     private final ElectronicEquipmentRepository electronicEquipmentRepository;
 
+    private final ParameterValueMapper parameterValueMapper;
+
     private final ElectronicEquipmentMapper electronicEquipmentMapper;
 
     @Transactional
     public ElectronicEquipmentDto create(ElectronicEquipmentForm electronicEquipmentForm) {
-        return electronicEquipmentMapper.toElectronicEquipmentDto(electronicEquipmentRepository.save(electronicEquipmentMapper.toElectronicEquipment(electronicEquipmentForm)));
+        ElectronicEquipment electronicEquipment = electronicEquipmentRepository.save(electronicEquipmentMapper.toElectronicEquipment(electronicEquipmentForm));
+        electronicEquipment.setParameters(parameterValueMapper.mapParameterValue(electronicEquipmentForm, electronicEquipment));
+        return electronicEquipmentMapper.toElectronicEquipmentDto(electronicEquipment);
     }
 
     @Transactional

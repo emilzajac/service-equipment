@@ -41,8 +41,28 @@
                 <constraints nullable="false"/>
             </column>
             <column name="electronic_equipment_id" type="BIGINT">
-                <constraints nullable="true"
+                <constraints nullable="false"
                              foreignKeyName="fk_comments_electronic_equipment"
+                             referencedTableName="electronic_equipment"
+                             references="electronic_equipment(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create_parameter_value_table" author="EZ">
+        <createTable tableName="parameter_value">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="parameter" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="electronic_equipment_id" type="BIGINT">
+                <constraints nullable="false"
+                             foreignKeyName="fk_parameter_value_electronic_equipment"
                              referencedTableName="electronic_equipment"
                              references="electronic_equipment(id)"/>
             </column>

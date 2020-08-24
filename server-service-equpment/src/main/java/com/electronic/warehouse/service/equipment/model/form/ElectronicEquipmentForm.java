@@ -5,6 +5,8 @@ import com.electronic.warehouse.service.equipment.model.enums.RepairStatusEnum;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.Set;
+
 @Data
 @Builder
 public class ElectronicEquipmentForm {
@@ -20,5 +22,7 @@ public class ElectronicEquipmentForm {
     private String color;
 
     private RepairStatusEnum repairStatusEnum;
+
+    private Set<ParameterValueForm> parameters;
 
 }

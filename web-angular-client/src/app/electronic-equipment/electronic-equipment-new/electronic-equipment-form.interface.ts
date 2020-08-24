@@ -8,4 +8,10 @@ export interface ElectronicEquipmentFormInterface {
   producer: string;
   color: string;
   repairStatusEnum: RapairStatusEnum;
+  parameters: ParameterValueForm[];
+}
+
+export interface ParameterValueForm {
+  parameter: string;
+  value: string;
 }

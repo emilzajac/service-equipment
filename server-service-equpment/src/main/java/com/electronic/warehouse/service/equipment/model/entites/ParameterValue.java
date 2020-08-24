@@ -21,17 +21,17 @@ import javax.persistence.Table;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "comments")
-public class Comment {
+@Table(name = "parameter_value")
+public class ParameterValue {
 
+    @Column(name = "parameter")
+    String parameter;
+    @Column(name = "value")
+    String value;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
-    @Column(name = "description")
-    private String description;
-
     @ManyToOne
     @JoinColumn(name = "electronic_equipment_id")
     private ElectronicEquipment electronicEquipment;
@@ -40,13 +40,12 @@ public class Comment {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Comment comment = (Comment) o;
-        return id != null && id.equals(comment.id);
+        ParameterValue that = (ParameterValue) o;
+        return id != null && id.equals(that.id);
     }
 
     @Override
     public int hashCode() {
-        return 42;
+        return 43;
     }
-
 }

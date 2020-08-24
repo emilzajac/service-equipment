@@ -1,10 +1,10 @@
-import { Component, OnInit }                  from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router }                             from '@angular/router';
-import { AlertService }                       from '../../alert/alert.service';
-import { first }                              from 'rxjs/operators';
-import { ElectronicEquipmentService }         from '../electronic-equipment.service';
-import { CategoryEnum }                       from '../category.enum';
+import { Component, OnInit }                             from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router }                                        from '@angular/router';
+import { AlertService }                                  from '../../alert/alert.service';
+import { first }                                         from 'rxjs/operators';
+import { ElectronicEquipmentService }                    from '../electronic-equipment.service';
+import { CategoryEnum }                                  from '../category.enum';
 
 @Component({
   selector: 'app-electronic-equipment-new',
@@ -29,6 +29,10 @@ export class ElectronicEquipmentNewComponent implements OnInit {
     return this.electronicAddForm.controls;
   }
 
+  get parameters(): FormArray {
+    return this.electronicAddForm.get('parameters') as FormArray;
+  }
+
   ngOnInit(): void {
     this.electronicAddForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -37,11 +41,28 @@ export class ElectronicEquipmentNewComponent implements OnInit {
       identifier: ['', Validators.required],
       color: ['', Validators.required],
       repairStatusEnum: ['BROKEN', Validators.required],
+      parameters: this.formBuilder.array([])
     });
     this.keys = Object.keys(this.categories).filter(Number);
   }
 
+  newParameter(): FormGroup {
+    return this.formBuilder.group({
+      parameter: '',
+      value: '',
+    });
+  }
+
+  addParameter(): void {
+    this.parameters.push(this.newParameter());
+  }
+
+  removeParameter(i: number): void {
+    this.parameters.removeAt(i);
+  }
+
   onSubmit(): void {
+    console.log(this.electronicAddForm.value);
     this.submitted = true;
     this.alertService.clear();
     if (this.electronicAddForm.invalid) {
