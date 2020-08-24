@@ -1,6 +1,8 @@
 # Service electronic equipment
 Project for managing electronic equipment in service warehouse
 
+**Prerequisites:** [Java 11](https://adoptopenjdk.net/).
+
 ## Steps to run database
 1. Build `docker-compose build`
 2. Run `docker-compose up`
