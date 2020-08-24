@@ -1,6 +1,7 @@
 import { Component, OnInit }            from '@angular/core';
 import { ElectronicEquipmentService }   from '../electronic-equipment.service';
 import { ElectronicEquipmentInterface } from './electronic-equipment.interface';
+import { Router }                       from '@angular/router';
 
 @Component({
   selector: 'app-electronic-equipment-list',
@@ -11,7 +12,8 @@ export class ElectronicEquipmentListComponent implements OnInit {
 
   electronicEquipment: ElectronicEquipmentInterface[];
 
-  constructor(private electronicEquipmentService: ElectronicEquipmentService) {
+  constructor(private electronicEquipmentService: ElectronicEquipmentService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -19,4 +21,11 @@ export class ElectronicEquipmentListComponent implements OnInit {
       .subscribe((equipment: ElectronicEquipmentInterface[]) => this.electronicEquipment = equipment);
   }
 
+  commentsList(identifier: string): void {
+    this.router.navigate([`/comment/list/${identifier}`]);
+  }
+
+  addNewElectronic(): void {
+    this.router.navigate([`electronic-equipment/add`]);
+  }
 }

@@ -7,7 +7,7 @@ import lombok.Data;
 @Builder
 public class CommentForm {
 
-    private Long electronicEquipmentId;
+    private String electronicEquipmentId;
 
     private String description;
 

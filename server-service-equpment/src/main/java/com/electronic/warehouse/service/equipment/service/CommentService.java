@@ -1,5 +1,6 @@
 package com.electronic.warehouse.service.equipment.service;
 
+import com.electronic.warehouse.service.equipment.exceptions.EquipmentException;
 import com.electronic.warehouse.service.equipment.mappers.CommentMapper;
 import com.electronic.warehouse.service.equipment.model.dto.CommentDto;
 import com.electronic.warehouse.service.equipment.model.entites.Comment;
@@ -7,6 +8,7 @@ import com.electronic.warehouse.service.equipment.model.form.CommentForm;
 import com.electronic.warehouse.service.equipment.repository.CommentRepository;
 import com.electronic.warehouse.service.equipment.repository.ElectronicEquipmentRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,7 +28,8 @@ public class CommentService {
     public Comment create(CommentForm commentForm) {
         return commentRepository.save(Comment.builder()
                 .description(commentForm.getDescription())
-                .electronicEquipment(electronicEquipmentRepository.getOne(commentForm.getElectronicEquipmentId()))
+                .electronicEquipment(electronicEquipmentRepository.findByIdentifier(commentForm.getElectronicEquipmentId())
+                        .orElseThrow(() -> new EquipmentException(String.format("Not found electronic with identifier: %s", commentForm.getElectronicEquipmentId()), HttpStatus.NOT_FOUND)))
                 .build());
     }
 

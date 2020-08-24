@@ -1,7 +1,7 @@
 <div class="container p-5 col-12">
+  <button (click)="addNewElectronic()" class="btn btn-primary my-3" type="button">Add new electronic</button>
   <div class="row">
     <div class="col-12">
-
       <table class="table table-striped">
         <thead>
         <tr>
@@ -12,6 +12,7 @@
           <th scope="col">Identifier</th>
           <th scope="col">Color</th>
           <th scope="col">Repair status</th>
+          <th scope="col">Comments</th>
         </tr>
         </thead>
         <tbody>
@@ -23,6 +24,9 @@
           <td>{{ equipment.identifier }}</td>
           <td>{{ equipment.color }}</td>
           <td>{{ equipment.repairStatusEnum }}</td>
+          <td>
+            <button (click)="commentsList(equipment.identifier)" class="btn btn-light" type="button">Comments</button>
+          </td>
         </tr>
         </tbody>
       </table>

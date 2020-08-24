@@ -11,6 +11,8 @@ import { AppRoutingModule }                 from './app-routing.module';
 import { AlertComponent }                   from './alert/alert.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavigationComponent }              from './navigation/navigation.component';
+import { CommentAddComponent }              from './electronic-equipment/comments/comment-add/comment-add.component';
+import { CommentListComponent }             from './electronic-equipment/comments/comment-list/comment-list.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { NavigationComponent }              from './navigation/navigation.compon
     ElectronicEquipmentNewComponent,
     ElectronicEquipmentListComponent,
     NavigationComponent,
-    HomeComponent
+    HomeComponent,
+    CommentAddComponent,
+    CommentListComponent
   ],
   imports: [
     BrowserModule,

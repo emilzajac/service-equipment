@@ -1,0 +1,26 @@
+<div class="container p-4">
+  <div class="row justify-content-around">
+    <div class="col-md-6 align-self-center">
+      <div class="card">
+        <header class="card-header">
+          <h4 class="card-title mt-2">Add comment</h4>
+        </header>
+        <article class="card-body">
+          <form (ngSubmit)="onSubmit()" [formGroup]="commentAddForm">
+            <div class="col form-group">
+              <label for="description">text of comment</label>
+              <textarea [ngClass]="{ 'is-invalid': submitted && field.description.errors }" class="form-control" formControlName="description" id="description"
+                        rows="10" type="text"></textarea>
+              <div *ngIf="submitted && field.description.errors" class="invalid-feedback">
+                <div *ngIf="field.description.errors.required">Description is required</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary btn-block" type="submit">Add</button>
+            </div>
+          </form>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>

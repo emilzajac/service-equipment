@@ -4,7 +4,8 @@ import { environment }                      from '../environments/environment';
 import { HomeComponent }                    from './home/home.component';
 import { ElectronicEquipmentListComponent } from './electronic-equipment/electronic-equipment-list/electronic-equipment-list.component';
 import { ElectronicEquipmentNewComponent }  from './electronic-equipment/electronic-equipment-new/electronic-equipment-new.component';
-
+import { CommentAddComponent }              from './electronic-equipment/comments/comment-add/comment-add.component';
+import { CommentListComponent }             from './electronic-equipment/comments/comment-list/comment-list.component';
 
 const routes: Routes = [
 
@@ -12,6 +13,8 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'electronic-equipment/list', component: ElectronicEquipmentListComponent},
   {path: 'electronic-equipment/add', component: ElectronicEquipmentNewComponent},
+  {path: 'comment/add/:electronic-equipment-id', component: CommentAddComponent},
+  {path: 'comment/list/:electronic-equipment-id', component: CommentListComponent},
 
 ];
 

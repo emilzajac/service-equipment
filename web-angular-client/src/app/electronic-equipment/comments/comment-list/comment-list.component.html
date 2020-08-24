@@ -1,0 +1,21 @@
+<div class="container p-5 col-12">
+  <button (click)="addComment(identifier)" class="btn btn-primary my-3" type="button">Add new Comment</button>
+  <div class="row ">
+    <div class="col-8">
+      <table class="table table-striped ">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let comment of comments; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ comment.description }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
