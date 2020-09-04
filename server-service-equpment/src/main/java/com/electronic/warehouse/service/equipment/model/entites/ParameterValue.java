@@ -36,16 +36,4 @@ public class ParameterValue {
     @JoinColumn(name = "electronic_equipment_id")
     private ElectronicEquipment electronicEquipment;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ParameterValue that = (ParameterValue) o;
-        return id != null && id.equals(that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return 43;
-    }
 }
