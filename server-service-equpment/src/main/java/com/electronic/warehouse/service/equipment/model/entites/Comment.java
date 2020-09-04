@@ -36,17 +36,4 @@ public class Comment {
     @JoinColumn(name = "electronic_equipment_id")
     private ElectronicEquipment electronicEquipment;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Comment comment = (Comment) o;
-        return id != null && id.equals(comment.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return 42;
-    }
-
 }
